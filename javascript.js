@@ -1,11 +1,15 @@
-const myLibrary = ["hello","hello2","hello3","hello4","hello6"];
+const myLibrary = ["hello","hello2","hello3","hello4","hello6,hello9","no"];
 
-function Book() {
-  // the constructor...
+function Book(title,author,pages,read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary() {
-  // do stuff here
+  let bookDetails = new Book(title,author,pages,read);
+  myLibrary.push(bookDetails);
 }
 
 function displayBooks(){
@@ -20,5 +24,18 @@ function displayBooks(){
     BookBox.appendChild(BookTitle);
 }
 }
+
+const dialog = document.querySelector("dialog");
+const bookButton = document.querySelector(".openbutton");
+const closeButton = document.querySelector(".closebutton");
+
+bookButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
 
 displayBooks();

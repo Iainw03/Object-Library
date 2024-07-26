@@ -1,15 +1,27 @@
+.all{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .book{
-    display: grid;
+    display: flex;
+    height: auto;
+    width: 70rem;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin: 10px;
+    padding: 10px;
     
-    grid-template-columns: repeat(6,10rem);
-    grid-template-rows: repeat(4,10rem);
-    gap: 1rem;
-    margin: 1rem;
+   
     background-color: yellow;
 }
 
 .bookCover{
-    
+    height: 15rem;
+    width: 12.2rem;
+    display: flex;
+    align-items: center;
     background-color: red;
     border: 10px solid black;
 }
@@ -17,4 +29,5 @@
 .bookCover > div{
     height: 30%;
     width: 100%;
+    background-color: blue;
 }
