@@ -13,7 +13,7 @@ function addBookToLibrary(title,author) {
 }
 
 function displayBooks(){
-    for(let i=0; i<myLibrary.length;i++){
+    let i = myLibrary.length;
         let title = myLibrary[i];
      const Book = document.querySelector(".book")
          const BookBox = document.createElement("div");
@@ -22,7 +22,7 @@ function displayBooks(){
 
     const BookTitle = document.createElement("div");
     BookBox.appendChild(BookTitle);
-}
+
 }
 
 const dialog = document.querySelector("dialog");
@@ -51,4 +51,3 @@ addBookToLibrary(title, author);
     dialog.close();
 });
 
-displayBooks();
