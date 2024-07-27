@@ -1,15 +1,15 @@
-const myLibrary = ["hello","hello2","hello3","hello4","hello6,hello9","no"];
+const myLibrary = [];
 
-function Book(title,author,pages,read) {
+function Book(title,author) {
   this.title = title;
   this.author = author;
-  this.pages = pages;
-  this.read = read;
+
 }
 
-function addBookToLibrary() {
-  let bookDetails = new Book(title,author,pages,read);
+function addBookToLibrary(title,author) {
+  let bookDetails = new Book(title,author);
   myLibrary.push(bookDetails);
+  displayBooks();
 }
 
 function displayBooks(){
@@ -37,5 +37,18 @@ closeButton.addEventListener("click", () => {
   dialog.close();
 });
 
+const createBook = document.querySelector("#addBookForm")
+createBook.addEventListener("submit", ()=>{ 
+
+  event.preventDefault();
+const author = createBook.author.value
+const title = createBook.title.value;
+console.log(author);
+
+addBookToLibrary(title, author);
+
+   createBook.reset();
+    dialog.close();
+});
 
 displayBooks();
