@@ -1,38 +1,65 @@
 const myLibrary = [];
 
-function Book(title,author) {
+function Book(title,author,pages) {
   this.title = title;
   this.author = author;
+  this.pages = pages;
   this.bookId = `book${++Book.id}`;
 
 }
 
 Book.bookID = 0;
 
-function addBookToLibrary(title,author) {
-  let bookDetails = new Book(title,author);
+function addBookToLibrary(title,author,pages) {
+  let bookDetails = new Book(title,author,pages);
   myLibrary.push(bookDetails);
-  displayBooks();
+  displayBooks(title,author,pages);
 }
 
 
 
-function displayBooks(){
-    let i = myLibrary.length;
-        let title = myLibrary[i];
-     const Book = document.querySelector(".book")
+function displayBooks(title,author,pages){
+    let i = myLibrary.length; 
+
+        
+        const Book = document.querySelector(".book");
+
+        const full = document.createElement("div");
+        full.classList.add("bookBase");
+        Book.appendChild(full);
+
+        const remBtn = document.createElement('button');
+        remBtn.classList.add("deleteButton");
+    full.appendChild(remBtn);
+    remBtn.textContent = 'Remove';
+    remBtn.onclick = remBook;
+
          const BookBox = document.createElement("div");
          BookBox.classList.add(`${myLibrary.bookId}`);
     BookBox.classList.add("bookCover");
-    Book.appendChild(BookBox);
+    full.appendChild(BookBox);
 
     const BookTitle = document.createElement("div");
-    BookBox.appendChild(BookTitle);
+    const titleDiv = document.createElement("div");
+    titleDiv.textContent = "Title: " + title;
+    titleDiv.classList.add("textDiv");
 
-    const remBtn = document.createElement('button');
-    BookBox.appendChild(remBtn);
-    remBtn.textContent = 'Remove';
-    remBtn.onclick = remBook;
+    const authorDiv = document.createElement("div");
+    authorDiv.textContent = "Author: " + author;
+    authorDiv.classList.add("textDiv");
+
+    const pagesDiv = document.createElement("div");
+    pagesDiv.textContent = "Pages: " + pages;
+    pagesDiv.classList.add("textDiv");
+
+    BookBox.appendChild(BookTitle);
+    BookTitle.appendChild(titleDiv);
+    BookTitle.appendChild(authorDiv);
+    BookTitle.appendChild(pagesDiv);
+
+
+
+
 
 }
 
@@ -67,11 +94,12 @@ createBook.addEventListener("submit", ()=>{
   event.preventDefault();
 const author = createBook.author.value
 const title = createBook.title.value;
+const pages = createBook.pages.value;
 
-
+console.log(title);
 console.log(author);
 
-addBookToLibrary(title, author);
+addBookToLibrary(title, author, pages);
 
    createBook.reset();
     dialog.close();
